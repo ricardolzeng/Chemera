@@ -205,6 +205,7 @@ def _detect_bazaarvoice(haystack: str) -> PluginDetection | None:
         haystack,
         [
             r"[?&]passkey=([^&'\"\s]+)",
+            r"\bpasskey\b\s*[:=]\s*['\"]([^'\"]+)['\"]",
             r"['\"]passkey['\"]\s*[:=]\s*['\"]([^'\"]+)['\"]",
             r"bvPasskey\s*[:=]\s*['\"]([^'\"]+)['\"]",
             r"data-bv-passkey\s*=\s*['\"]([^'\"]+)['\"]",
@@ -214,6 +215,8 @@ def _detect_bazaarvoice(haystack: str) -> PluginDetection | None:
         haystack,
         [
             r"[?&]Filter=ProductId:([^&'\"\s]+)",
+            r"\bProductId\b\s*[:=]\s*['\"]?([A-Za-z0-9_.:-]+)",
+            r"\bproductId\b\s*[:=]\s*['\"]?([A-Za-z0-9_.:-]+)",
             r"['\"]ProductId['\"]\s*[:=]\s*['\"]?([A-Za-z0-9_.:-]+)",
             r"['\"]productId['\"]\s*[:=]\s*['\"]?([A-Za-z0-9_.:-]+)",
             r"data-bv-product-id\s*=\s*['\"]([^'\"]+)['\"]",
